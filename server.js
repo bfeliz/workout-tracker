@@ -16,10 +16,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/custommethods",
-    { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+    useNewUrlParser: true
+});
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
@@ -30,7 +29,20 @@ app.get("/exercise", (req, res) => {
 });
 
 app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
+    db.Workout.find()
+        .sort({ day: -1 })
+        .limit(1)
+        .then(dbWorkout => {
+            console.log(dbWorkout);
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
+app.post("/api/workouts", ({ body }, res) => {
+    db.Workout.create(body)
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
