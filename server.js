@@ -28,12 +28,14 @@ app.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/exercise.html"));
 });
 
+app.get("/stats", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/stats.html"));
+});
+
 app.get("/api/workouts", (req, res) => {
-    db.Workout.find()
-        .sort({ day: -1 })
-        .limit(1)
+    db.Workout.find({})
+        .sort({ date: -1 })
         .then(dbWorkout => {
-            console.log(dbWorkout);
             res.json(dbWorkout);
         })
         .catch(err => {
@@ -48,6 +50,20 @@ app.post("/api/workouts", ({ body }, res) => {
         })
         .catch(err => {
             res.json(err);
+        });
+});
+
+app.put("/api/workouts/:id", ({ body, params }, res) => {
+    db.Workout.findByIdAndUpdate(
+        params.id,
+        { $push: { exercises: body } },
+        { new: true, runValidators: true }
+    )
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.status(400).json(err);
         });
 });
 
