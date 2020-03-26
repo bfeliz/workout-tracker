@@ -19,7 +19,8 @@ This is a simple application that runs right in the browser, no installation or 
 JavaScript - programming language <br>
 Node.js - JavaScript runtime <br>
 Express - Node.js web application framework <br>
-Mongoose - database
+MongoDB - database<br>
+Mongoose - database schema
 
 ## Author:
 
