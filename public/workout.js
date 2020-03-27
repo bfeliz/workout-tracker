@@ -1,6 +1,6 @@
+// functions to render workout data including tallys on home page
 async function initWorkout() {
     const lastWorkout = await API.getLastWorkout();
-    // console.log("Last workout:", lastWorkout);
     if (lastWorkout) {
         console.log(lastWorkout);
         const lastWorkArray = lastWorkout.exercises;

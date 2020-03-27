@@ -1,8 +1,10 @@
+// get required npm packages and connections
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
 
+// make express, middleware, and database connections
 const PORT = process.env.PORT || 5000;
 
 const db = require("./models");
@@ -20,6 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true
 });
 
+// routes
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/index.html"));
 });
@@ -79,6 +82,8 @@ app.get("/api/workouts/range", (req, res) => {
             res.json(err);
         });
 });
+
+// listen for server connection
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });

@@ -7,6 +7,7 @@ mongoose.connect("mongodb://localhost/workout", {
     useFindAndModify: false
 });
 
+// seed to get database filled for immediate data visualisation
 let workoutSeed = [
     {
         day: moment()
