@@ -63,10 +63,22 @@ app.put("/api/workouts/:id", ({ body, params }, res) => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            res.status(400).json(err);
+            res.json(err);
         });
 });
 
+app.get("/api/workouts/range", (req, res) => {
+    db.Workout.find()
+        .sort({ day: -1 })
+        .limit(7)
+        .then(dbWorkout => {
+            dbWorkout.reverse();
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
 });
