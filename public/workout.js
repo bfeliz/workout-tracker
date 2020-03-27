@@ -2,6 +2,7 @@ async function initWorkout() {
     const lastWorkout = await API.getLastWorkout();
     // console.log("Last workout:", lastWorkout);
     if (lastWorkout) {
+        console.log(lastWorkout);
         const lastWorkArray = lastWorkout.exercises;
         let durArray = [];
         for (let i = 0; i < lastWorkArray.length; i++) {

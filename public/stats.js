@@ -263,7 +263,7 @@ function labelNames(data) {
     console.log(data);
     let labels = [];
     data.forEach(workout => {
-        labels.push(workout.day.substr(5, 5));
+        labels.push(workout.day.substr(0, 5));
     });
     console.log(labels);
     return labels;
