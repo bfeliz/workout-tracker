@@ -4,15 +4,13 @@
 
 An application to track your workouts. You can log multiple exercises in a single workout, and track the name, type, weight, sets, reps, and duration of exercise. If you are doing cardio, you can track distance traveled.
 
-## [Try it yourself!](https://pure-forest-86324.herokuapp.com/)
-
 The following image shows a glimpse of the application:
 
 ![workout app](public/assets/screenshot.png)
 
 ## Getting Started
 
-This is a simple application that runs right in the browser, no installation or downloads needed.
+This is a simple application that runs right in the browser, no installation or downloads needed. This application is not currently deployed.
 
 ## Built With:
 
